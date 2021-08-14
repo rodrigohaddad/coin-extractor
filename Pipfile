@@ -1,0 +1,21 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+apache-airflow = "==2.1.2"
+googleads = "==27.0.0"
+pandas = "==1.2.4"
+pyarrow = "==3.0.0"
+google-cloud-bigquery = "==2.9.0"
+google-cloud-bigquery-storage = "==2.3.0"
+nest-asyncio = "==1.4.3"
+matplotlib = "*"
+google-api-python-client = "==2.4.0"
+requests = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.8"
