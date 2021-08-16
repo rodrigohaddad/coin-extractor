@@ -46,6 +46,7 @@ class CoinsPrices:
         try:
             http_response = self.http_adapter.get(url=f"https://api.coingecko.com/api/v3/{endpoint}",
                                                   params={"date": self.date_coin, "location": False})
+            http_response.raise_for_status()
             coin_info = http_response.json()
         except:
             return self.empty_row_for_error()
