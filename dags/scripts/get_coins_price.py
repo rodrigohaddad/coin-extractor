@@ -15,9 +15,11 @@ class CoinsPrices:
         config.update({k.lower(): v for k, v in os.environ.items()})
 
         now = datetime.today()
-        self.partition_date = config.get('ds', now.strftime("%Y-%m-%d"))
-        self.partition_date_no_dash = config.get('ds_no_dash', now.strftime("%Y%m%d"))
-        self.date_coin = config.get('ds_coin', now.strftime("%d-%m-%Y"))
+        ctx = config.get("airflow_ctx_execution_date", now.strftime("%Y-%m-%d"))
+        ctx_date = datetime.strptime(ctx[:10], "%Y-%m-%d")
+        self.partition_date = ctx_date.strftime("%Y-%m-%d")
+        self.partition_date_no_dash = ctx_date.strftime("%Y%m%d")
+        self.date_coin = ctx_date.strftime("%d-%m-%Y")
 
         self.coins_ids = ["bitcoin", "ethereum"]
         self.info_fields = ["id", "symbol", "name"]
